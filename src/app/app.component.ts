@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'scrap-ui';
+  searchData = {
+    firstName:'',
+    lastName:'',
+    domain:'',
+  }
+  constructor() {
+
+  }
+
+  search() {
+    console.log(this.searchData);
+  }
 }
