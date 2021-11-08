@@ -23,4 +23,14 @@
       </form>
     </div>
   </div>
+  <div class="row" *ngIf="emails && emails.length > 0">
+    <div class="col-12">
+      Your Emails
+    </div>
+    <div class="col-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let email of emails">{{email.selectorvalue}}</li>
+      </ul>
+    </div>
+  </div>
 </div>

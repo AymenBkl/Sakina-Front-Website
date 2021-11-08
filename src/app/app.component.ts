@@ -23,8 +23,9 @@ export class AppComponent {
     this.httpClient.post('http://localhost:3000/scrap',this.searchData)
       .subscribe((data:any) => {
         console.log(data);
-        if (data && data.length > 0){
-          this.emails = data;
+        if (data && data.success && data.data){
+          console.log('here',data.data.selectors);
+          this.emails = data.data.selectors;
         }
       },error => {
         console.log(error);
