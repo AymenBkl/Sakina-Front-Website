@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center">File (XLSX) Convertuer</h1>
+      <h1 class="text-center">File (XLSX) Converter</h1>
     </div>
     <div class="col-12 mt-3">
       <form class="row g-3" #form="ngForm">
         <div class="col-10">
-          <label for="file" >Please Chooce File</label>
+          <label for="file" >Please Choose File</label>
           <input type="file" class="form-control" id="file" name="file" placeholder="File" accept=".xlsx" (change)="readFileExcel($event)">
           <label class="text-danger mt-2" *ngIf='error.msg != ""'>{{error.msg}}</label>
-          <label class="text-success mt-2" *ngIf='success'>File Filter Succesfully</label>
+          <label class="text-success mt-2" *ngIf='success'>File Filtered Successfully</label>
         </div>
         
       </form>
@@ -20,8 +20,10 @@
         <label for="file" >Enter email to send</label>
         <input type="text" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]='emailToSend' >
         <label class="text-danger mt-2" *ngIf='errEmail != ""'>{{errEmail}}</label>
+        <label class="text-success mt-2" *ngIf='serverRes.msg != "" && !serverRes.err'>{{serverRes.msg}}</label>
+        <label class="text-danger mt-2" *ngIf='serverRes.msg != "" && serverRes.err'>{{serverRes.msg}}</label>
       </div>
-      <button type="submit" class="btn btn-primary mb-2 mt-3" (click)="sendEmail()">Confirm identity</button>
+      <button type="submit" class="btn btn-primary mb-2 mt-3" (click)="sendEmail()">Send</button>
       </form>
     </div>
   </div>

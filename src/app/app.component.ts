@@ -37,18 +37,18 @@ export class AppComponent {
               }
               else {
                 this.success = false;
-                this.error.msg = 'All rows includes a #xxx number';
+                this.error.msg = 'Not All rows includes a #xxx number';
               }
             }
             else {
               this.success = false;
-              this.error.msg = "Please chooce a file with rows";
+              this.error.msg = "Please Choose a file with rows";
             }
             console.log(rows);
           })
           .catch(err => {
             this.success = false;
-            this.error.msg = 'Something Went Wrong ! Please chooce an xlsx file';
+            this.error.msg = 'Something Went Wrong ! Please Choose an xlsx file';
           })
       }
       else {
@@ -77,11 +77,17 @@ export class AppComponent {
   }
 
   sendDataServer(email: string) {
+    this.serverRes = {err:false,msg:''}
     this.httpClient.post(this.baseUrl, {rows:this.filterdRows,columns:this.columns,email:email})
-      .subscribe(res => {
-
+      .subscribe((res:any) => {
+        if (res && res.succes) {
+          this.serverRes = {err:false,msg:res.msg}
+        }
+        else {
+          this.serverRes = {err:true,msg:res.msg};
+        }
       },err => {
-
+        this.serverRes = {err:true,msg:err.msg};
       })
   }
 }
