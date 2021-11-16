@@ -1,46 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="text-center">Test Email Scraps</h1>
+      <h1 class="text-center">File (XLSX) Convertuer</h1>
     </div>
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <form class="row g-3" #form="ngForm">
         <div class="col-6">
-          <label for="name" >First Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="First Name" [(ngModel)]='searchData.firstName'>
-        </div>
-        <div class="col-6">
-          <label for="l-name" >Last Name</label>
-          <input type="text" class="form-control" id="l-name" name="l-name" placeholder="Last Name" [(ngModel)]='searchData.lastName'>
-        </div>
-        <div class="col-12">
-          <label for="domain" >Domain</label>
-          <input type="text" class="form-control" id="domain" name="domain" placeholder="Domain" [(ngModel)]='searchData.domain'>
-        </div>
-        <div class="col-12 text-center">
-          <button type="submit" class="btn btn-primary mb-3" (click)='search()'>Search</button>
+          <label for="file" >Please Chooce File</label>
+          <input type="file" class="form-control" id="file" name="file" placeholder="File" accept=".xlsx" (change)="readFileExcel($event)">
         </div>
       </form>
-    </div>
-  </div>
-  <div class="row" *ngIf="emails && emails.length > 0">
-    <div class="col-12">
-      Searched Email
-    </div>
-    <div class="col-12">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let email of searchedEmails">{{email.selectorvalue}}</li>
-      </ul>
-    </div>
-  </div>
-  <div class="row" *ngIf="emails && emails.length > 0">
-    <div class="col-12">
-      Your Emails
-    </div>
-    <div class="col-12">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let email of emails">{{email.selectorvalue}}</li>
-      </ul>
     </div>
   </div>
 </div>
