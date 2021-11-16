@@ -5,10 +5,22 @@
     </div>
     <div class="col-12 mt-3">
       <form class="row g-3" #form="ngForm">
-        <div class="col-6">
+        <div class="col-10">
           <label for="file" >Please Chooce File</label>
           <input type="file" class="form-control" id="file" name="file" placeholder="File" accept=".xlsx" (change)="readFileExcel($event)">
+          <label class="text-danger" *ngIf='error.msg != ""'>{{error.msg}}</label>
+          <label class="text-success" *ngIf='success'>File Filter Succesfully</label>
         </div>
+        
+      </form>
+    </div>
+    <div class="col-12 mt-3" *ngIf="success">
+      <form class="form-inline">
+      <div class="col-10" >
+        <label for="file" >Enter email to send</label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]='emailToSend'>
+      </div>
+      <button type="submit" class="btn btn-primary mb-2 mt-3">Confirm identity</button>
       </form>
     </div>
   </div>

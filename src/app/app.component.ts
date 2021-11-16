@@ -9,6 +9,7 @@ import readXlsxFile from 'read-excel-file'
 export class AppComponent {
   error = { msg: '' };
   success = false;
+  emailToSend = '';
   constructor(private httpClient: HttpClient) {
 
   }
