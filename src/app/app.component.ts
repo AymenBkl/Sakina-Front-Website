@@ -14,6 +14,7 @@ export class AppComponent {
   columns = [];
   errEmail = '';
   serverRes = {err:false,msg: ''};
+  preview = true;
   baseUrl = 'http://localhost:3000/email/';
   constructor(private httpClient: HttpClient) {
 
@@ -89,5 +90,14 @@ export class AppComponent {
       },err => {
         this.serverRes = {err:true,msg:err.msg};
       })
+  }
+
+  showHide() {
+    if (this.preview){
+      this.preview = false;
+    }
+    else {
+      this.preview = true;
+    }
   }
 }
